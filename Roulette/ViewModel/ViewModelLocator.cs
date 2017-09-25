@@ -27,7 +27,7 @@ namespace Roulette.ViewModel
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
             }
         }
-        
+
         public static void Cleanup()
         {
                SimpleIoc.Default.Unregister<MainViewModel>();

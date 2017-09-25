@@ -55,7 +55,7 @@ namespace Roulette.ViewModel
         private void Calculator()
         {
             var firstSigned = -1;
-            var holeNumber = 8;
+            const int holeNumber = 8;
             var lastNumber = RouletteTable.LastOrDefault();
 
             var holes = new List<List<int>>();
@@ -80,6 +80,7 @@ namespace Roulette.ViewModel
                 if (r == lastNumber)
                 {
                     foreach (var r2 in RouletteTable)
+                    {
                         if (r2 == firstSigned)
                         {
                             holes.Add(hole);
@@ -89,6 +90,7 @@ namespace Roulette.ViewModel
                         {
                             hole.Add(r2);
                         }
+                    }
                 }
             }
 
@@ -113,7 +115,6 @@ namespace Roulette.ViewModel
             }
 
             NumberText = sb.ToString();
-
         }
 
         #endregion
@@ -162,7 +163,6 @@ namespace Roulette.ViewModel
                 }
             }
         }
-
 
         private int _numberCount;
 
