@@ -114,7 +114,7 @@ namespace Roulette.ViewModel
                     sb.Append(n).Append(", ");
             }
 
-            NumberText = sb.ToString();
+            NumbersText = sb.ToString();
         }
 
         #endregion
@@ -134,17 +134,17 @@ namespace Roulette.ViewModel
             }
         }
 
-        private string _numberText;
+        private string _numbersText;
 
-        public string NumberText
+        public string NumbersText
         {
-            get { return _numberText; }
+            get { return _numbersText; }
             set
             {
-                if (_numberText != value)
+                if (_numbersText != value)
                 {
-                    _numberText = value;
-                    RaisePropertyChanged(nameof(NumberText));
+                    _numbersText = value;
+                    RaisePropertyChanged(nameof(NumbersText));
                 }
             }
         }
@@ -194,7 +194,7 @@ namespace Roulette.ViewModel
             }
         }
 
-        private static readonly List<int> RouletteTable = new List<int>
+        private static IReadOnlyCollection<int> RouletteTable = new List<int>
         {
             0,
             32,
@@ -245,7 +245,7 @@ namespace Roulette.ViewModel
 
                 switch (columnName)
                 {
-                    case "Number":
+                    case nameof(Number):
                         if (Number < 0)
                         {
                             errorMessage = "Nem lehet kisebb, mint 0!";

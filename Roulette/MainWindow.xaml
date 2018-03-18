@@ -26,16 +26,30 @@
         <TextBox Text="{Binding Number, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True, Mode=TwoWay}"
                  VerticalContentAlignment="Center"
                  Validation.ErrorTemplate="{StaticResource RightErrorTemplate}" Margin="10,2,10,2" TextWrapping="Wrap"
-                 MaxLength="2" Grid.Column="1" Grid.Row="0" />
+                 MaxLength="2" Grid.Column="1" Grid.Row="0" x:Name="txtNumber"/>
         <Label Content="Húzások száma:" Margin="10,2,10,2" VerticalContentAlignment="Center" Grid.Column="0"
                Grid.Row="1" />
         <Label Content="{Binding NumberCount, Mode=TwoWay}" Margin="10,2,10,2" VerticalContentAlignment="Center"
                Grid.Column="1" Grid.Row="1" />
-        <Button Content="Hozzáad" Margin="10,2,10,2" Command="{Binding AddCommand}" Grid.Column="0" Grid.Row="2" />
+        <Button Content="Hozzáad" Margin="10,2,10,2" Command="{Binding AddCommand}" Grid.Column="0" Grid.Row="2">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <MultiDataTrigger>
+                            <MultiDataTrigger.Conditions>
+                                <Condition Binding="{Binding Path=(Validation.HasError), ElementName=txtNumber}" Value="False"/>
+                            </MultiDataTrigger.Conditions>
+                            <Setter Property="IsEnabled" Value="True"/>
+                        </MultiDataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
         <Button Content="Visszaállít" Margin="10,2,10,2" Command="{Binding ClearCommand}" Grid.Column="1" Grid.Row="2" />
         <Label Content="Eddigi húzott számok:" Margin="10,2,10,2" VerticalContentAlignment="Center" Grid.Column="0"
                Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <Label Content="{Binding NumberText, Mode=TwoWay}" Margin="10,2,10,2" VerticalContentAlignment="Center"
+        <Label Content="{Binding NumbersText, Mode=TwoWay}" Margin="10,2,10,2" VerticalContentAlignment="Center"
                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
         <Label Content="Lehetséges tétek:" Margin="10,2,10,2" VerticalContentAlignment="Center" Grid.Column="0"
                Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
