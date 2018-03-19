@@ -111,7 +111,7 @@ namespace Roulette.ViewModel
 
             foreach (var n in Numbers)
             {
-                    sb.Append(n).Append(", ");
+                sb.Append(n).Append(", ");
             }
 
             NumbersText = sb.ToString();

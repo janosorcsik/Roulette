@@ -1,6 +1,5 @@
-using GalaSoft.MvvmLight;
+using CommonServiceLocator;
 using GalaSoft.MvvmLight.Ioc;
-using Microsoft.Practices.ServiceLocation;
 
 namespace Roulette.ViewModel
 {
@@ -30,7 +29,7 @@ namespace Roulette.ViewModel
 
         public static void Cleanup()
         {
-               SimpleIoc.Default.Unregister<MainViewModel>();
+            SimpleIoc.Default.Unregister<MainViewModel>();
         }
     }
 }
