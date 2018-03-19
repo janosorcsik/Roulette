@@ -49,11 +49,11 @@
         <Button Content="Visszaállít" Margin="10,2,10,2" Command="{Binding ClearCommand}" Grid.Column="1" Grid.Row="2" />
         <Label Content="Eddigi húzott számok:" Margin="10,2,10,2" VerticalContentAlignment="Center" Grid.Column="0"
                Grid.Row="3" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <Label Content="{Binding NumbersText, Mode=TwoWay}" Margin="10,2,10,2" VerticalContentAlignment="Center"
+        <TextBlock Text="{Binding NumbersText, Mode=TwoWay}" Margin="10,2,10,2" TextWrapping="WrapWithOverflow"
                Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
         <Label Content="Lehetséges tétek:" Margin="10,2,10,2" VerticalContentAlignment="Center" Grid.Column="0"
                Grid.Row="5" Grid.ColumnSpan="2" HorizontalAlignment="Center" FontWeight="Bold"/>
-        <Label Content="{Binding TipText, Mode=TwoWay}" Margin="10,2,10,2" VerticalContentAlignment="Center"
+        <TextBlock Text="{Binding TipText, Mode=TwoWay}" Margin="10,2,10,2" TextWrapping="WrapWithOverflow"
                Grid.Column="0" Grid.Row="6" Grid.ColumnSpan="2" HorizontalAlignment="Center" />
     </Grid>
 </Window>
