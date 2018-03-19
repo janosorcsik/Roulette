@@ -55,11 +55,10 @@ namespace Roulette.ViewModel
         private void Calculator()
         {
             var firstSigned = -1;
-            const int holeNumber = 8;
             var lastNumber = RouletteTable.LastOrDefault();
 
-            var holes = new List<List<int>>();
-            var hole = new List<int>();
+            var holes = new Collection<Collection<int>>();
+            var hole = new Collection<int>();
 
             foreach (var r in RouletteTable)
             {
@@ -74,7 +73,7 @@ namespace Roulette.ViewModel
                         firstSigned = r;
                     }
                     holes.Add(hole);
-                    hole = new List<int>();
+                    hole = new Collection<int>();
                 }
 
                 if (r == lastNumber)
@@ -96,6 +95,7 @@ namespace Roulette.ViewModel
 
             var sb = new StringBuilder();
 
+            const int holeNumber = 8;
             foreach (var hol in holes.Where(i => i.Count >= holeNumber))
             {
                 foreach (var h in hol)
@@ -123,7 +123,8 @@ namespace Roulette.ViewModel
 
         public string TipText
         {
-            get { return _tipText; }
+            get => _tipText;
+
             set
             {
                 if (_tipText != value)
@@ -138,7 +139,7 @@ namespace Roulette.ViewModel
 
         public string NumbersText
         {
-            get { return _numbersText; }
+            get => _numbersText;
             set
             {
                 if (_numbersText != value)
@@ -153,7 +154,7 @@ namespace Roulette.ViewModel
 
         public ObservableCollection<int> Numbers
         {
-            get { return _numbers; }
+            get => _numbers;
             set
             {
                 if (_numbers != value)
@@ -168,7 +169,7 @@ namespace Roulette.ViewModel
 
         public int NumberCount
         {
-            get { return _numberCount; }
+            get => _numberCount;
             set
             {
                 if (_numberCount != value)
@@ -183,7 +184,7 @@ namespace Roulette.ViewModel
 
         public int Number
         {
-            get { return _number; }
+            get => _number;
             set
             {
                 if (_number != value)
@@ -241,33 +242,28 @@ namespace Roulette.ViewModel
         {
             get
             {
-                string errorMessage = string.Empty;
-
                 switch (columnName)
                 {
                     case nameof(Number):
                         if (Number < 0)
                         {
-                            errorMessage = "Nem lehet kisebb, mint 0!";
+                            return "Nem lehet kisebb, mint 0!";
                         }
                         else
                         {
                             if (Number > 36)
                             {
-                                errorMessage = "Nem lehet nagyobb, mint 36!";
+                                return "Nem lehet nagyobb, mint 36!";
                             }
                         }
                         break;
                 }
 
-                return errorMessage;
+                return string.Empty;
             }
         }
 
-        public string Error
-        {
-            get { return string.Empty; }
-        }
+        public string Error => string.Empty;
 
         #endregion
     }
